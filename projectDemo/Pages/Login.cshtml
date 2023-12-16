@@ -1,0 +1,39 @@
+﻿@page
+@model ProjectDemo.Pages.LoginModel
+@{
+}
+
+@* <form method="post">
+    <label>
+        Email:
+        <input name="Email" />
+    </label>
+
+    <label>
+        Password:
+        <input name="Password" type="password" />
+    </label>
+
+    <button type="submit">Login</button>
+</form> *@
+
+
+
+<form method="post" class="container">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title text-center">Login</h3>
+            <div class="form-group">
+                <label for="Email">Email:</label>
+                <input name="Email" id="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Password">Password:</label>
+                <input name="Password" id="Password" type="password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </div>
+        </div>
+    </div>
+</form>
