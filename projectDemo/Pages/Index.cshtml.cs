@@ -8,8 +8,6 @@ namespace ProjectDemo.Pages
 {
     public class IndexModel : PageModel
     {
-        
-
-        
+              
     }
 }
