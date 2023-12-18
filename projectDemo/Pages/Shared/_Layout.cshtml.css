@@ -49,3 +49,6 @@ button.accept-policy {
 .navbar-light .navbar-nav .nav-link {
     color: #000;
 }
+body {
+  background-color: #808080;
+}
