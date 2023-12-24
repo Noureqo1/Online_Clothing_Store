@@ -1,9 +1,9 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
-namespace projectDemo.models
+namespace ProjectDemo.models
 {
-    public class products
+    public class Products
     {
         [Key]
         public int Id { get; set; }

@@ -14,6 +14,7 @@ namespace ProjectDemo.Pages
         }
         public models.users tempUser { get; set; }
         public List<models.users> usersList { get; set; }
+        public List<models.Products> products { get; set; }
         public void OnGET()
         {
             string connectionString = "Data Source=LAPTOP-OH72TN5U;Initial Catalog=projectdemo;Integrated Security=True";
