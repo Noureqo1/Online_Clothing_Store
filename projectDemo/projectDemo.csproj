@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\Index.scss" />
     <None Include="wwwroot\lib\background.jpg" />
   </ItemGroup>
 
