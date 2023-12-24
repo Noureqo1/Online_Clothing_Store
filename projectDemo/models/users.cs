@@ -1,6 +1,6 @@
 ﻿namespace ProjectDemo.models
 {
-    public class users
+    public class users 
     {
         public int id { get; set; }
         public string name { get; set; }

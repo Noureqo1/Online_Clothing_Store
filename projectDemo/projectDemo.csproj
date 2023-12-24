@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\lib\background.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\background.jpg" />
   </ItemGroup>
 
 </Project>
