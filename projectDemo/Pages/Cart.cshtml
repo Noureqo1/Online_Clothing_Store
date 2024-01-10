@@ -1,8 +1,8 @@
 ﻿@page
-@model ProjectDemo.Pages.CartModel
+@model CartModel
 @{
+    ViewData["Title"] = "Cart";
 }
-
 <section class="h-100 gradient-custom">
     <div class="container py-5">
         <div class="row d-flex justify-content-center my-4">
@@ -51,8 +51,9 @@
                                     </button>
 
                                     <div class="form-outline">
-                                        <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
+                                        <input id="form1" min="0" name="quantity" value="@Model.tempCart.Quantity" type="number" class="form-control" />
                                         <label class="form-label" for="form1">Quantity</label>
+
                                     </div>
 
                                     <button class="btn btn-primary px-3 ms-2"
@@ -124,7 +125,7 @@
                                 <!-- Quantity -->
                                 <!-- Price -->
                                 <p class="text-start text-md-center">
-                                    <strong>179.99 EGP</strong>
+                                    <strong>$17.99</strong>
                                 </p>
                                 <!-- Price -->
                             </div>
@@ -138,6 +139,7 @@
                         <p class="mb-0">12.10.2020 - 14.10.2020</p>
                     </div>
                 </div>
+
             </div>
             <div class="col-md-4">
                 <div class="card mb-4">
@@ -161,7 +163,7 @@
                                         <p class="mb-0">(including VAT)</p>
                                     </strong>
                                 </div>
-                                <span><strong>530.99 EGP</strong></span>
+                                <span><strong>$53.98</strong></span>
                             </li>
                         </ul>
 
@@ -173,4 +175,32 @@
             </div>
         </div>
     </div>
+    <table>
+        <thead>
+            <id>Delivery time</id>
+            <id>Quantity</id>
+            <id>Delivery Fee</id>
+            <id>Voucher</id>
+            <id>Total Price</id>
+            <id>Status Voucher</id>
+            <Id>P_ID</Id>
+        </thead>
+        <tbody>
+            @{
+                foreach (var item in @Model.CartList)
+                {
+                    <tr>
+                        <td>@item.Delivery_time</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Delivery_Fee</td>
+                        <td>@item.Voucher</td>
+                        <td>@item.Total_Price</td>
+                        <td>@item.Status_Voucher</td>
+                        <td>@item.P_ID</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 </section>
+

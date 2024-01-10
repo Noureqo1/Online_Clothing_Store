@@ -8,9 +8,7 @@ namespace ProjectDemo.Pages
     [BindProperties(SupportsGet = true)]
     public class SignUpModel : PageModel
     {
-        [BindProperty]
-        public models.users User { get; set; }
-
+        public required models.users User { get; set; }
         public string ErrorMessage { get; set; }
 
         public void OnGet()
@@ -20,44 +18,44 @@ namespace ProjectDemo.Pages
         public IActionResult OnPost()
         {
             // Validate password confirmation
-            if (User.Password != User.ConfirmPassword)
-            {
-                ErrorMessage = "Password and Confirm Password do not match.";
-                return Page();
-            }
+            //if (User.Password != User.ConfirmPassword)
+            //{
+            //    ErrorMessage = "Password and Confirm Password do not match.";
+            //    return Page();
+            //}
 
             // Connect to the database
-            string connectionString = ConfigurationManager.ConnectionStrings["Data Source=LAPTOP-OH72TN5U;Initial Catalog=PROJECT1;Integrated Security=True"].ConnectionString;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            string connectionString = "Data Source=LAPTOP-OH72TN5U;Initial Catalog=Project6;Integrated Security=True";
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                connection.Open();
-
                 // Insert the user data into the database
-                string query = "INSERT INTO users (Name, Email, PhoneNumber, Password) VALUES (@Name, @Email, @PhoneNumber, @Password)";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Name", User.Name);
-                command.Parameters.AddWithValue("@Email", User.Email);
-                command.Parameters.AddWithValue("@PhoneNumber", User.PhoneNumber);
-                command.Parameters.AddWithValue("@Password", User.Password);
+                string query = $"insert into Users(Username, Email, Password, Phone_Number) " +
+               $"values('{User.Name}', '{User.Email}', '{User.Password}', '{User.PhoneNumber}')";
 
-                int rowsAffected = command.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(query, con);
 
-                if (rowsAffected > 0)
+                try
                 {
-                    // User registration successful
-                    // You can implement your success logic here
+                    con.Open();
+                    command.ExecuteNonQuery();
 
-                    return RedirectToPage("/Index");
+                    return RedirectToPage("/Login");
+                
+
                 }
-                else
+                catch (SqlException err)
                 {
-                    // Failed to insert user data into the database
-                    ErrorMessage = "An error occurred during registration. Please try again.";
+                    Console.WriteLine(err.Message);
                 }
+                finally
+                {
+                    con.Close();
+                }
+
+  
             }
 
             return Page();
-            
         }
     }
 }

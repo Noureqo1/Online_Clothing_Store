@@ -19,16 +19,16 @@ namespace ProjectDemo.Pages
         public IActionResult OnPost()
         {
             // Connect to the database
-            string connectionString = ConfigurationManager.ConnectionStrings["Data Source=LAPTOP-OH72TN5U;Initial Catalog=PROJECT1;Integrated Security=True"].ConnectionString;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            string connectionString = "Data Source=LAPTOP-OH72TN5U;Initial Catalog=Project6;Integrated Security=True";
+            SqlConnection con = new SqlConnection();
             {
-                connection.Open();
+                con.ConnectionString = connectionString;
 
                 // Query the database to check if the user credentials match
                 string query = "SELECT COUNT(*) FROM users WHERE Email = @Email AND Password = @Password";
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@Email", User.Email);
-                command.Parameters.AddWithValue("@Password", User.Pasword);
+                command.Parameters.AddWithValue("@Password", User.Password);
 
                 int count = (int)command.ExecuteScalar();
 

@@ -9,14 +9,11 @@ namespace ProjectDemo.models
         [Required]
         public required string ID { get; set; }
         [Required]
-        [StringLength(10, MinimumLength = 3)]
-        public required string UserName { get; set; }
+        [StringLength(25, MinimumLength = 3)]
         public String? Email { get; set; }
-        public int? Pasword { get; set; }
-        public DateTime? BirthDate { get; set; }
-        public object? Password { get; internal set; }
-        public object? ConfirmPassword { get; internal set; }
-        public object? Name { get; internal set; }
-        public object PhoneNumber { get; internal set; }
+        public int? Password { get; internal set; }
+        public int? ConfirmPassword { get; internal set; }
+        public String? Name { get; internal set; }
+        public int? PhoneNumber { get; internal set; }
     }
 }
